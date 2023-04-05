@@ -18,10 +18,17 @@ const Login = () => {
         })
     }
 
-    const login =()=>{
-      axios.post('http://localhost:9002/login',user)
-      .then(res=>alert(res.data.message));
+    const login = async ()=>{
+      const {  email, password } = user;
+      if (email && password){
+     await axios.post('http://localhost:9002/login',user)
+      .then(res => console.log(res)).catch((err)=>{
+          console.log(err);
+      })
+    }else{
+      alert("Invalid ");
     }
+  }
   return (
     
     <div className='login'>
